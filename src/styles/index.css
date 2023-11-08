@@ -1,0 +1,92 @@
+@import "./reset.css";
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --white-50: #f0f0f0;
+}
+
+@font-face {
+  font-family: Lalezar;
+  src: url("../assets/fonts/Lalezar-Regular.ttf");
+}
+
+body {
+  background-color: var(--white-50);
+  direction: rtl;
+}
+
+*,
+body,
+html {
+  font-family: Lalezar;
+}
+
+/* REMOVE THE X BUTTON FROM INPUT TYPE SEARCH */
+
+/* clears the ‘X’ from Internet Explorer */
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* REMOVE ARROWS FROM INPUT TYPE NUMBER */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* scrollbar styles */
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* end of scroll bar styles */
+
+
+/* SWEET ALERT STYLES */
+
+.swal-footer{
+  display: flex;
+  justify-content: center;
+}
