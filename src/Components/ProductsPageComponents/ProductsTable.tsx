@@ -3,10 +3,11 @@ import ProductTableItem from "./ProductTableItem";
 //type
 import { ProductType } from "../../types/common.d";
 
+//context
 import { ProductsData } from "../../pages/Products/Products";
 
 function ProductsTable() {
-  const { productsArray, setProductsArray } = ProductsData();
+  const { productsArray } = ProductsData();
 
   return (
     <div className="mt-6 bg-white p-4 pt-0 overflow-auto">
@@ -21,11 +22,7 @@ function ProductsTable() {
         </thead>
         <tbody className="lg:text-lg">
           {productsArray.map((product: ProductType) => (
-            <ProductTableItem
-              setProductsArray={setProductsArray}
-              key={product.id}
-              {...product}
-            />
+            <ProductTableItem key={product.id} {...product} />
           ))}
         </tbody>
       </table>

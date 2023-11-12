@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import swal from "sweetalert";
+import { Fragment } from "react";
 
 //component
 import Button from "../UI/Button";
@@ -9,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 //type
-import { FormValues, ProductType } from "../../types/common.d";
+import { ProductType, setState } from "../../types/common.d";
 
 //api req
 import { updateProduct } from "../../services/apiRequests";
@@ -17,6 +16,7 @@ import { updateProduct } from "../../services/apiRequests";
 import productsInputArray, {
   productInputValidationSchema,
 } from "../../constants/productsInputArray";
+import { editHandler } from "../../helpers/Operations";
 import { ProductsData } from "../../pages/Products/Products";
 
 const flattenedProductsInputArray = productsInputArray.reduce(
@@ -26,7 +26,7 @@ const flattenedProductsInputArray = productsInputArray.reduce(
 
 type ModalType = {
   product: ProductType;
-  setIsEditModalShown: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEditModalShown: setState<boolean>;
 };
 
 function ShowEditProductModal({ setIsEditModalShown, product }: ModalType) {
@@ -35,37 +35,24 @@ function ShowEditProductModal({ setIsEditModalShown, product }: ModalType) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<ProductType>({
     resolver: yupResolver(productInputValidationSchema),
   });
 
-  const handleProductUpdate: SubmitHandler<FormValues> = (data: FormValues) => {
-    swal({
-      title: "آیا از تغییر اصلاعات محصول مطمئن هستید؟",
-      icon: "warning",
-      buttons: ["بله", "خیر"],
-    }).then(async (res) => {
-      if (!res) {
-        //update product operation
-        try {
-          const res = await updateProduct(product.id, data); // return new list of products
-          setIsEditModalShown(false);
-          setProductsArray(res);
-          swal({
-            title: "محصول مورد نظر با موفقیت آپدیت شد",
-            icon: "success",
-          });
-        } catch (error) {
-          swal({
-            title: "خطایی رخ داد،دوباره امتحان کنید",
-            icon: "error",
-          });
-        }
-      }
-    });
+  const handleProductUpdate: SubmitHandler<ProductType> = (
+    data: ProductType
+  ) => {
+    editHandler(
+      "اطلاعات محصول",
+      data,
+      updateProduct,
+      product.id,
+      setProductsArray,
+      setIsEditModalShown
+    );
   };
   return (
-    <div className="bg-white p-5 py-7 max-h-[80vh] overflow-auto">
+    <div className="p-5 py-7 max-h-[80vh] overflow-auto">
       <h1 className="text-lg">اطلاعات جدید محصول را وارد کنید</h1>
       <form onSubmit={handleSubmit(handleProductUpdate)}>
         {flattenedProductsInputArray.map((input) => (
@@ -73,9 +60,12 @@ function ShowEditProductModal({ setIsEditModalShown, product }: ModalType) {
             <InputTemplate
               isForEditModal
               register={register}
-              {...input}
+              // {...input}
               product={product}
               errors={errors}
+              icon={input.icon}
+              label={input.label}
+              name={input.name}
             />
           </Fragment>
         ))}

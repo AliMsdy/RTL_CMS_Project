@@ -12,7 +12,7 @@ import {
 import { VscSymbolColor } from "react-icons/vsc";
 
 //type
-import { ProductInput } from "../types/common.d";
+import { InputType,ProductType } from "../types/common.d";
 
 const productInputValidationSchema = yup.object().shape({
   title: yup.string().required("فیلد را تکمیل کنید(الزامی)"),
@@ -24,7 +24,7 @@ const productInputValidationSchema = yup.object().shape({
   colors: yup.number().required("فیلد را تکمیل کنید(الزامی)"),
 });
 
-const productsInputArray: Omit<ProductInput, "register" | "errors">[][] = [
+const productsInputArray: Omit<InputType<ProductType>, "register" | "errors">[][] = [
   [
     {
       type: "text",

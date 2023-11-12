@@ -24,7 +24,7 @@ function Overlay({
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="relative max-w-[100%] sm:w-[80%] lg:w-[60%]"
+        className="relative max-w-[100%] sm:w-[80%] lg:w-[60%] bg-white"
       >
         {!isForSidebar && (
           <button onClick={actionFunction} className="absolute left-0">

@@ -9,27 +9,28 @@ import productsInputArray, {
 } from "../../constants/productsInputArray";
 
 //type
-import { FormValues } from "../../types/common.d";
+import { ProductType } from "../../types/common.d";
 
+//product context
+import { ProductsData } from "../../pages/Products/Products";
 //api reqs
 import { createProduct } from "../../services/apiRequests";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import swal from "sweetalert";
-// import { ProductsData } from "../../pages/Products/Products";
 
 function AddNewProduct() {
-  // const {setProductsArray} = ProductsData()
+  const {setProductsArray} = ProductsData()
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<ProductType>({
     resolver: yupResolver(productInputValidationSchema),
   });
-  const handleAddProduct: SubmitHandler<FormValues> = (data: FormValues) => {
-    console.log(data);
+  const handleAddProduct: SubmitHandler<ProductType> = (data: ProductType) => {
     swal({
       title: "آیا از اضافه شدن کالا مطمئن هستید؟",
       icon: "info",
@@ -39,8 +40,8 @@ function AddNewProduct() {
         //create product operation
         try {
           const res = await createProduct(data);
-          console.log(res);
-          // setProductsArray(res)
+          setProductsArray(res)
+          reset()
           swal({
             title: "محصول مورد نظر با موفقیت اضافه شد",
             icon: "success",

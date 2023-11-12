@@ -1,4 +1,4 @@
-import React, {
+import {
   Suspense,
   createContext,
   lazy,
@@ -12,7 +12,7 @@ import AddNewProduct from "../../Components/ProductsPageComponents/AddNewProduct
 import Loading from "../../Components/UI/Loading";
 
 //type
-import { ProductType } from "../../types/common.d";
+import { ProductType, setState } from "../../types/common.d";
 
 //requests
 import { getProducts } from "../../services/apiRequests";
@@ -23,13 +23,13 @@ const ProductsTable = lazy(
 
 type ProductContext = {
   productsArray: ProductType[];
-  setProductsArray: React.Dispatch<React.SetStateAction<ProductType[]>>;
+  setProductsArray:setState
 };
 
 const ProductsContext = createContext<ProductContext | null>(null);
 
 function Products() {
-  const [productsArray, setProductsArray] = useState<ProductType[]>([]);
+  const [productsArray, setProductsArray] = useState([]);
   useEffect(() => {
     getProducts().then((res) => setProductsArray(res));
   }, []);

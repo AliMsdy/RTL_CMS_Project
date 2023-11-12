@@ -24,12 +24,14 @@ function ShowDetailProductModal(product: DetailProductType) {
           <p>
             {showMore ? productDesc.substring(0, 250) + "..." : productDesc}{" "}
           </p>
-          <button
-            className="underline text-blue-700 mt-2"
-            onClick={() => setShowMore(!showMore)}
-          >
-            {showMore ? "نمایش بیشتر" : "نمایش کمتر"}
-          </button>
+          {productDesc.length > 250 && (
+            <button
+              className="underline text-blue-700 mt-2"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "نمایش بیشتر" : "نمایش کمتر"}
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -37,4 +39,3 @@ function ShowDetailProductModal(product: DetailProductType) {
 }
 
 export default ShowDetailProductModal;
-
