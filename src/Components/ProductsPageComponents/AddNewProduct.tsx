@@ -21,7 +21,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import swal from "sweetalert";
 
 function AddNewProduct() {
-  const {setProductsArray} = ProductsData()
+  const { setProductsArray } = ProductsData();
   const {
     register,
     handleSubmit,
@@ -40,8 +40,8 @@ function AddNewProduct() {
         //create product operation
         try {
           const res = await createProduct(data);
-          setProductsArray(res)
-          reset()
+          setProductsArray(res);
+          reset();
           swal({
             title: "محصول مورد نظر با موفقیت اضافه شد",
             icon: "success",

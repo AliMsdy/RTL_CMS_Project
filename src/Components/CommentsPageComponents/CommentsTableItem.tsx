@@ -56,7 +56,7 @@ function CommentsTableItem({ comment, setComments }: CommentStateType) {
       <td className=" align-middle w-[20%]">
         <div className="flex sm:justify-center justify-end gap-1 sm:gap-2">
           <Button
-            className="bg-red-700"
+            variant="delete"
             onClick={() =>
               id && deleteHandler("کامنت", deleteComment, id, setComments)
             }
@@ -67,14 +67,14 @@ function CommentsTableItem({ comment, setComments }: CommentStateType) {
           <Button>پاسخ</Button>
           {isAccept ? (
             <Button
-              className="bg-red-500"
+              variant="reject"
               onClick={() => setRejectComment(true)}
             >
               رد کامنت
             </Button>
           ) : (
             <Button
-              className="bg-green-700"
+              variant="confirm"
               onClick={() => setConfirmComment(true)}
             >
               تایید

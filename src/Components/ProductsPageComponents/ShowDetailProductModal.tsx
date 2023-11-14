@@ -8,7 +8,8 @@ type DetailProductType = Pick<
 
 function ShowDetailProductModal(product: DetailProductType) {
   const { productDesc, sale, colors, popularity } = product;
-  const [showMore, setShowMore] = useState(productDesc.length > 250);
+  const [showMore, setShowMore] = useState(productDesc && productDesc.length > 250);
+  if (!productDesc) return false
 
   return (
     <div className="bg-white p-1 sm:p-5 overflow-auto">

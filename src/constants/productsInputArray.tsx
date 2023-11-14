@@ -20,7 +20,7 @@ const productInputValidationSchema = yup.object().shape({
   count: yup.number().required("فیلد را تکمیل کنید(الزامی)"),
   img: yup.string().required("فیلد را تکمیل کنید(الزامی)"),
   popularity: yup.number().required("فیلد را تکمیل کنید(الزامی)"),
-  sale: yup.number().required("فیلد را تکمیل کنید(الزامی)"),
+  sale: yup.number().positive("عدد وارد شده باید مثبت باشد").required("فیلد را تکمیل کنید(الزامی)"),
   colors: yup.number().required("فیلد را تکمیل کنید(الزامی)"),
 });
 

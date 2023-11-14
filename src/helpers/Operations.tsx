@@ -1,13 +1,13 @@
 // import React from "react";
 import swal from "sweetalert";
-import { CommentType, ProductType, setState } from "../types/common";
+import { CommentType, ProductType, UserType, setState } from "../types/common";
 
-type AsyncDeleteType = (id: number) => Promise<[]>;
+type AsyncDeleteType = (id: number | undefined) => Promise<[]>;
 
 const deleteHandler = (
   type: string,
   asyncDelete: AsyncDeleteType,
-  id: number,
+  id: number | undefined,
   setStateFunc: setState
 ) => {
   swal({
@@ -34,14 +34,15 @@ const deleteHandler = (
   });
 };
 
-type UpdateProduct = (id: number, data: ProductType) => Promise<ProductType[]>
-
-type UpdateComment = (id: number, data: Pick<CommentType, "body">) => Promise<CommentType[]>
+// type AsyncFuncType = (
+//   id: number,
+//   data: ProductType | Pick<CommentType, "body"> | UserType
+// ) => Promise<ProductType[]> | Promise<CommentType[]> | Promise<UserType[]>;
 
 const editHandler = (
   type: string,
-  data: ProductType | Pick<CommentType, "body">,
-  asyncFunc: UpdateProduct | UpdateComment,
+  data: ProductType | UserType | Pick<CommentType, "body">,
+  asyncFunc: any,
   id: number | undefined,
   setStateFunc: setState,
   closeBox: setState<boolean>
@@ -54,14 +55,15 @@ const editHandler = (
     if (!res) {
       //update product operation
       try {
-        if(id){
-        const res = await asyncFunc(id, data); // return new list of products
-        closeBox(false);
-        setStateFunc(res);
-        swal({
-          title: `${type} مورد نظر با موفقیت آپدیت شد`,
-          icon: "success",
-        });
+        if (id) {
+          // console.log(first)
+          const res = await asyncFunc(id, data); // return new list of products
+          closeBox(false);
+          setStateFunc(res);
+          swal({
+            title: `${type} مورد نظر با موفقیت آپدیت شد`,
+            icon: "success",
+          });
         }
       } catch (error) {
         swal({
@@ -74,5 +76,3 @@ const editHandler = (
 };
 
 export { deleteHandler, editHandler };
-
-

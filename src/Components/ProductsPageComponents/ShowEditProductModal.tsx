@@ -35,7 +35,7 @@ function ShowEditProductModal({ setIsEditModalShown, product }: ModalType) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ProductType>({
+  } = useForm({
     resolver: yupResolver(productInputValidationSchema),
   });
 
@@ -60,12 +60,9 @@ function ShowEditProductModal({ setIsEditModalShown, product }: ModalType) {
             <InputTemplate
               isForEditModal
               register={register}
-              // {...input}
+              {...input}
               product={product}
               errors={errors}
-              icon={input.icon}
-              label={input.label}
-              name={input.name}
             />
           </Fragment>
         ))}
@@ -78,3 +75,4 @@ function ShowEditProductModal({ setIsEditModalShown, product }: ModalType) {
 }
 
 export default ShowEditProductModal;
+

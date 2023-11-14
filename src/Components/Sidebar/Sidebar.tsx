@@ -38,6 +38,7 @@ function Sidebar({ setSidebar, sidebar }: SidebarProps) {
             <NavLink
               to={to}
               key={title}
+              onClick={() => setSidebar(false)}
               className={({ isActive }) => {
                 const styles = `flex items-center my-1 p-3 py-3 text-lg hover:bg-[#391588] first:mb-5 ${
                   isActive && "bg-[#2c106a]"

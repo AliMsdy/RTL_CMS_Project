@@ -36,6 +36,9 @@ function UpdateCommentModal({
     formState: { errors },
   } = useForm<CommentType>({
     resolver: yupResolver(commentUpdateSchema),
+    defaultValues:{
+      body:commentBody
+    }
   });
 
   const handleCommentUpdate = (data: CommentType) => {
@@ -54,7 +57,6 @@ function UpdateCommentModal({
             id="comment-body"
             spellCheck="false"
             {...register("body")}
-            defaultValue={commentBody}
             className="w-full bg-input-color p-2 pr-8 focus:outline-none rounded-lg lg:text-lg tracking-wide"
           />
         </div>

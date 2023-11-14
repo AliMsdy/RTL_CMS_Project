@@ -1,4 +1,4 @@
-import { CommentType, ProductType } from "../types/common.d";
+import { CommentType, ProductType, UserType } from "../types/common.d";
 import axios from "./axiosInstance";
 // START OF PRODUCTS REQUESTS
 const getProducts = async () => {
@@ -22,7 +22,7 @@ const createProduct = async (data: ProductType) => {
   }
 };
 
-const deleteProduct = async (id: number) => {
+const deleteProduct = async (id: number|undefined) => {
   try {
     await axios.delete(`/products/${id}`);
     const response = await getProducts(); //return new list of products
@@ -58,7 +58,7 @@ const getComments = async () => {
     console.log(error);
   }
 };
-const deleteComment = async (id: number) => {
+const deleteComment = async (id: number|undefined) => {
   try {
     await axios.delete(`/comments/${id}`);
     const response = await getComments(); //return new list of products
@@ -98,6 +98,37 @@ const rejectComment = async (id: number | undefined):Promise<CommentType[]| unde
 };
 // END OF COMMENTS REQUESTS
 
+// START OF COMMENTS REQUESTS
+const getUsers = async () => {
+  try {
+    const response = await axios.get("/users");
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const deleteUser = async (id: number |undefined) => {
+  try {
+    await axios.delete(`/users/${id}`);
+    const response = await getUsers(); //return new list of products
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const updateUser = async (
+  id: number,
+  data: UserType
+) => {
+  try {
+    await axios.put(`/users/${id}`, data);
+    const response = await getUsers(); //return new list of products
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+// END OF COMMENTS REQUESTS
 export {
   createProduct,
   deleteComment,
@@ -108,4 +139,7 @@ export {
   updateProduct,
   confirmComment,
   rejectComment,
+  getUsers,
+  deleteUser,
+  updateUser,
 };

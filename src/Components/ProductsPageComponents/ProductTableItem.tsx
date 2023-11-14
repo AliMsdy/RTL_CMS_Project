@@ -37,13 +37,13 @@ function ProductTableItem({ ...product }: ProductType) {
         <div className="flex sm:justify-center justify-end gap-1 sm:gap-2">
           <Button onClick={() => setIsDetailModalShown(true)}>جزئیات</Button>
           <Button
-          className="bg-red-700"
+          variant="delete"
             onClick={() =>
               deleteHandler("محصول", deleteProduct, id, setProductsArray)
             }
           >
             حذف
-          </Button>
+        </Button>
           <Button onClick={() => setIsEditModalShown(true)}>ویرایش</Button>
         </div>
       </td>
