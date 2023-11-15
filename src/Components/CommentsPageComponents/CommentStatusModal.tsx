@@ -29,7 +29,7 @@ function CommentStatusModal({
           بله
         </Button>
         <Button
-          className="px-10 py-2 bg-transparent text-zinc-950 border-black border-2"
+          className="px-10 py-2 bg-transparent text-zinc-950 dark:text-white border-black border-2"
           onClick={() => closeModal(false)}
         >
           خیر

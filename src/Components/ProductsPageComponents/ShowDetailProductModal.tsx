@@ -12,7 +12,7 @@ function ShowDetailProductModal(product: DetailProductType) {
   if (!productDesc) return false
 
   return (
-    <div className="bg-white p-1 sm:p-5 overflow-auto">
+    <div className="bg-white dark:bg-dark-body-secondary p-1 sm:p-5 overflow-auto">
       <div className="grid grid-cols-[1fr_1fr_1fr_minmax(auto,12fr)] gap-2 sm:gap-3 items-center justify-items-center text-xs sm:text-base ">
         <div>تعداد فروش</div>
         <div>محبوبیت</div>

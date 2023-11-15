@@ -58,7 +58,7 @@ function AddNewProduct() {
   return (
     <section className="mt-4">
       <h3 className="text-2xl mb-4">افزودن محصول جدید</h3>
-      <div className="bg-white p-4">
+      <div className="bg-white dark:bg-dark-body-secondary p-4">
         <form onSubmit={handleSubmit(handleAddProduct)}>
           <div className="md:flex justify-between gap-x-8">
             {productsInputArray.map((groups, index) => {

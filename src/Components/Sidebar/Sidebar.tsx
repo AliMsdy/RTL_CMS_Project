@@ -25,7 +25,7 @@ function Sidebar({ setSidebar, sidebar }: SidebarProps) {
     <div>
       {/* MENU ITEMS */}
       <aside
-        className={`bg-custom-blue text-white h-screen transition-transform fixed ${
+        className={`bg-custom-blue dark:bg-dark-body-secondary text-white h-screen transition-transform fixed ${
           sidebar ? "translate-x-[0px]" : "translate-x-[1000px]"
         } sm:relative sm:translate-x-0 z-20 `}
       >
@@ -40,7 +40,7 @@ function Sidebar({ setSidebar, sidebar }: SidebarProps) {
               key={title}
               onClick={() => setSidebar(false)}
               className={({ isActive }) => {
-                const styles = `flex items-center my-1 p-3 py-3 text-lg hover:bg-[#391588] first:mb-5 ${
+                const styles = `flex items-center my-1 p-3 py-3 text-lg hover:bg-[#391588] transition-all duration-300 first:mb-5 ${
                   isActive && "bg-[#2c106a]"
                 }`;
                 return styles;

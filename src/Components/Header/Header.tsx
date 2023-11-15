@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import ProfilePic from "/img/profilePic.jfif";
 
@@ -10,15 +9,9 @@ import { BsBell, BsSun } from "react-icons/bs";
 //type
 import { SidebarProps } from "../../types/common.d";
 
-type IconTyep = {
-  icon: ReactNode;
-};
+//helperFn
+import darkModeHandler from "../../helpers/darkmodeFn";
 
-function IconButton({ icon }: IconTyep) {
-  return (
-    <button className="bg-custom-blue rounded-md text-white p-3">{icon}</button>
-  );
-}
 
 function Header({ setSidebar }: SidebarProps) {
   return (
@@ -40,7 +33,7 @@ function Header({ setSidebar }: SidebarProps) {
           />
           <div className="">
             <h3 className="text-sm md:text-lg">محمد امین سعیدی راد</h3>
-            <p className="text-xs md:text-base text-[#656363]">
+            <p className="text-xs md:text-base text-[#656363] dark:text-white">
               برنامه نویس فرانت اند
             </p>
           </div>
@@ -67,8 +60,8 @@ function Header({ setSidebar }: SidebarProps) {
           </div>
 
           <div className="flex gap-x-3">
-            <IconButton icon={<BsBell />} />
-            <IconButton icon={<BsSun />} />
+            <Button className="p-3 rounded-md "><BsBell /></Button>
+            <Button onClick={() => darkModeHandler()} className="p-3 rounded-md "><BsSun /></Button>
           </div>
         </section>
       </nav>

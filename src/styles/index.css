@@ -24,6 +24,13 @@ html {
   font-family: Lalezar;
 }
 
+.dark input,
+.dark textarea,
+.dark main input ~ span svg,
+.dark main textarea ~ span svg {
+  color: black;
+}
+
 /* REMOVE THE X BUTTON FROM INPUT TYPE SEARCH */
 
 /* clears the ‘X’ from Internet Explorer */

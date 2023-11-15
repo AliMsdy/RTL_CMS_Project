@@ -8,7 +8,7 @@ type UsersState = {
   }
 function UsersTable({users,setUsers}:UsersState) {
   return (
-    <div className="mt-6 bg-white p-4 pt-0 overflow-auto">
+    <div className="mt-6 bg-white dark:bg-dark-body-secondary p-4 pt-0 overflow-auto">
       <table className="w-full border-separate border-spacing-y-4 border-spacing-x-6 sm:border-spacing-x-2 lg:border-spacing-x-4 sm:border-spacing-y-6 ">
         <thead className="lg:text-lg">
           <tr>

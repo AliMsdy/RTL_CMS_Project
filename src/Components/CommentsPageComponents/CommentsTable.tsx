@@ -12,7 +12,7 @@ type CommentState = {
 
 function CommentsTable({ comments, setComments }:CommentState) {
   return (
-    <div className="mt-6 bg-white p-4 pt-0 overflow-auto">
+    <div className="mt-6 p-4 pt-0 overflow-auto bg-white dark:bg-dark-body-secondary">
       <table className="w-full border-separate border-spacing-y-4 border-spacing-x-6 sm:border-spacing-x-2 lg:border-spacing-x-0 sm:border-spacing-y-6 ">
         <thead className="lg:text-lg">
           <tr>

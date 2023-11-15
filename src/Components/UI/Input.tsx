@@ -21,9 +21,7 @@ function InputTemplate(props: InputType<ProductType | UserType>) {
     <>
       <label htmlFor={name}>{label}</label>
       <div className="relative my-1">
-        <span className="absolute right-[4px] top-[50%] translate-y-[-50%]">
-          {icon}
-        </span>
+        
         <input
           className="w-full bg-input-color p-2 pr-8 focus:outline-none rounded-lg lg:text-lg tracking-wide"
           spellCheck="false"
@@ -36,6 +34,9 @@ function InputTemplate(props: InputType<ProductType | UserType>) {
               : ""
           }
         />
+        <span className="absolute right-[4px] top-[50%] translate-y-[-50%]">
+          {icon}
+        </span>
       </div>
       <ErrorMessage
         errors={errors}

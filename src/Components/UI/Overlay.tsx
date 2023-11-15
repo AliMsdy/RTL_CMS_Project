@@ -1,4 +1,4 @@
-import { GrClose } from "react-icons/gr";
+import { AiOutlineClose } from "react-icons/ai";
 import { ChildrenPropType } from "../../types/common.d";
 
 type OverlayType = ChildrenPropType & {
@@ -24,11 +24,11 @@ function Overlay({
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="relative max-w-[100%] sm:w-[80%] lg:w-[60%] bg-white"
+        className="relative max-w-[100%] sm:w-[80%] lg:w-[60%] bg-white dark:bg-dark-body-secondary"
       >
         {!isForSidebar && (
           <button onClick={actionFunction} className="absolute left-0">
-            <GrClose size={20} />
+            <AiOutlineClose size={20} />
           </button>
         )}
         {children}

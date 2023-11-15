@@ -36,9 +36,9 @@ function UpdateCommentModal({
     formState: { errors },
   } = useForm<CommentType>({
     resolver: yupResolver(commentUpdateSchema),
-    defaultValues:{
-      body:commentBody
-    }
+    defaultValues: {
+      body: commentBody,
+    },
   });
 
   const handleCommentUpdate = (data: CommentType) => {
@@ -49,9 +49,6 @@ function UpdateCommentModal({
       <form onSubmit={handleSubmit(handleCommentUpdate)}>
         <label htmlFor="comment-body">کامنت جدید را بنویسید</label>
         <div className="relative my-1">
-          <span className="absolute right-[4px] top-[50%] translate-y-[-50%]">
-            <BsCursorText />
-          </span>
           <textarea
             rows={3}
             id="comment-body"
@@ -59,6 +56,9 @@ function UpdateCommentModal({
             {...register("body")}
             className="w-full bg-input-color p-2 pr-8 focus:outline-none rounded-lg lg:text-lg tracking-wide"
           />
+          <span className="absolute right-[4px] top-[50%] translate-y-[-50%]">
+            <BsCursorText />
+          </span>
         </div>
         <ErrorMessage
           errors={errors}
